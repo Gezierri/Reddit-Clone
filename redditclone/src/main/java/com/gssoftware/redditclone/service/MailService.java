@@ -28,12 +28,7 @@ public class MailService {
             messageHelper.setSubject(notificationEmail.getSubject());
             messageHelper.setText(notificationEmail.getBody());
         };
-        try {
-            mailSender.send(messagePreparator);
-            log.info("Activation email sent!!");
-        } catch (MailException e) {
-            log.error("Exception occurred when sending mail", e);
-            throw new SpringRedditException("Exception occurred when sending mail to " + notificationEmail.getRecipient(), e);
-        }
+        mailSender.send(messagePreparator);
+        log.info("Activation email sent!!");
     }
 }
